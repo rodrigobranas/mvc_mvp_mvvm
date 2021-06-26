@@ -1,14 +1,14 @@
 import Model from "./Model";
 import View from "./View";
 
-export default class Controller {
+export default class ViewModel {
 	model: Model;
 	view: View;
 
 	constructor (view: View, model: Model) {
 		this.model = model;
 		this.view = view;
-		this.view.setController(this);
+		this.view.setPresenter(this);
 	}
 
 	add () {
@@ -17,9 +17,5 @@ export default class Controller {
 
 	equal () {
 		this.view.visor = this.model.equal(this.view.visor);
-	}
-
-	number (text: string) {
-		this.view.visor += text;
 	}
 }

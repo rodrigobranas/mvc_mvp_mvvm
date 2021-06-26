@@ -4,15 +4,15 @@ import View from "./View";
 
 const model = new Model();
 const view = new View();
-new Controller(view, model);
+const controller = new Controller(view, model);
 
-view.number("1");
+controller.number("1");
 console.log(view.visor);
-view.add();
-view.number("2");
+controller.add();
+controller.number("2");
 console.log(view.visor);
-view.add();
-view.number("3");
+controller.add();
+controller.number("3");
 console.log(view.visor);
-view.equal();
+controller.equal();
 console.log(view.visor);

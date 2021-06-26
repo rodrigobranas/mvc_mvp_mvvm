@@ -9,8 +9,12 @@
   "devDependencies": {},
   "scripts": {
     "tsc:build": "tsc",
-	"tsc:init": "tsc --init",
-	"main": "tsc && node dist/model_view_controller/main.js"
+    "tsc:init": "tsc --init",
+    "main:v": "tsc && node dist/view/main.js",
+    "main:mv": "tsc && node dist/model_view/main.js",
+    "main:mvc": "tsc && node dist/model_view_controller/main.js",
+    "main:mvp": "tsc && node dist/model_view_presenter/main.js",
+    "main:mvvm": "tsc && node dist/model_view_view_model/main.js"
   },
   "repository": {
     "type": "git",
