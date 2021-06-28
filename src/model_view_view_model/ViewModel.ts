@@ -1,21 +1,37 @@
 import Model from "./Model";
-import View from "./View";
+import Observable from "./Observable";
+import Observer from "./Observer";
 
-export default class ViewModel {
-	model: Model;
-	view: View;
+export default class ViewModel implements Observable {
+	state: any;
+	observers: Observer[];
 
-	constructor (view: View, model: Model) {
-		this.model = model;
-		this.view = view;
-		this.view.setPresenter(this);
+	constructor () {
+		const model = new Model();
+		this.state = {};
+		this.state.visor =  "";
+		this.state.number = (text: string) => {
+			this.state.visor += text;
+			this.notifyAll();
+		};
+		this.state.add = () => {
+			this.state.visor = model.add(this.state.visor);
+			this.notifyAll();
+		};
+		this.state.equal = () => {
+			this.state.visor = model.equal(this.state.visor);
+			this.notifyAll();
+		};
+		this.observers = [];
+	}
+	
+	attach (observer: Observer) {
+		this.observers.push(observer);
 	}
 
-	add () {
-		this.view.visor = this.model.add(this.view.visor);
-	}
-
-	equal () {
-		this.view.visor = this.model.equal(this.view.visor);
+	notifyAll(): void {
+		for (const observer of this.observers) {
+			observer.update();
+		}
 	}
 }

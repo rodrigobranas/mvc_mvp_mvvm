@@ -1,26 +1,30 @@
-import Presenter from "./Presenter";
+import Observer from "./Observer";
+import ViewModel from "./ViewModel";
 
-export default class View {
-	presenter: Presenter | undefined;
+export default class View implements Observer {
+	state: any;
 	visor: string;
 
 	constructor () {
+		const viewModel = new ViewModel();
+		viewModel.attach(this);
+		this.state = viewModel.state
 		this.visor = "";
 	}
-
-	setPresenter (presenter: Presenter) {
-		this.presenter = presenter;
+	
+	number (text: string) {
+		this.state.number(text);
 	}
 	
 	add () {
-		this.presenter?.add();
+		this.state.add();
 	}
-
+	
 	equal () {
-		this.presenter?.equal();
+		this.state.equal();
 	}
 
-	number (text: string) {
-		this.visor += text;
+	update(): void {
+		this.visor = this.state.visor;
 	}
 }
