@@ -14,7 +14,8 @@
     "main:mv": "tsc && node dist/model_view/main.js",
     "main:mvc": "tsc && node dist/model_view_controller/main.js",
     "main:mvp": "tsc && node dist/model_view_presenter/main.js",
-    "main:mvvm": "tsc && node dist/model_view_view_model/main.js"
+    "main:mvvm": "tsc && node dist/model_view_view_model/main.js",
+    "main:example": "tsc && node dist/example/main.js"
   },
   "repository": {
     "type": "git",
